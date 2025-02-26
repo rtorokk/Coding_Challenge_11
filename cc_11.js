@@ -45,4 +45,20 @@ borrower1.returnBook("The Great Gatsby"); // Returning a book
 console.log(borrower1.borrowedBooks); // Expected Outcome: []
 
 
+// Task 3: Creating a Library Class
 
+class Library { // Class for creating a library object
+    constructor() { // Constructor for the library object
+        this.books = []; // creating a books property for the library object
+        this.borrowers = []; // creating a borrowers property for the library object
+    }
+    addBook(book) { // Method for adding a book to the library
+        this.books.push(book); // Adding method to add a book to the books array
+    }
+    listBooks() { // Method for listing all the books in the library
+        return this.books.forEach(book => console.log(book.getDetails())); // Adding method to list all the books in the library
+    }
+}
+const library = new Library(); // Creating a new library object
+library.addBook(book1); // Adding a book to the library
+library.listBooks(); // Listing all the books in the library
