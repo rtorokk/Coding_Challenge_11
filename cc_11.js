@@ -58,7 +58,27 @@ class Library { // Class for creating a library object
     listBooks() { // Method for listing all the books in the library
         return this.books.forEach(book => console.log(book.getDetails())); // Adding method to list all the books in the library
     }
+    lendBook(borrowerId, isbn) { // Method for lending a book to a borrower
+        let book = this.books.find(book => book.isbn === isbn); // Finding the book in the library
+        let borrower = this.borrowers.find(borrower => borrower.borrowerId === borrowerId); // Finding the borrower in the library
+        if (book.copies > 0) { // Checking if there are copies of the book available
+            book.updateCopies(-1); // Updating the copies of the book
+            borrower.borrowBook(book.title); // Borrowing the book
+        }
+    }
 }
+
 const library = new Library(); // Creating a new library object
 library.addBook(book1); // Adding a book to the library
 library.listBooks(); // Listing all the books in the library
+
+//Task 4 Testing - Implementing Book Borrowing
+library.borrowers.push(borrower1); // Adding a borrower to the library
+library.lendBook(201, "123456"); // Lending a book to a borrower
+console.log(book1.getDetails()); // Expected Outcome: Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 3
+console.log(borrower1.borrowedBooks); // Expected Outcome: ["The Great Gatsby"]
+
+
+
+
+
